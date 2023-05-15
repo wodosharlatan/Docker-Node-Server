@@ -15,7 +15,7 @@ git add .
 git commit -m "[Auto GIT - $(date "+%d.%m.%Y")]"
 
 # Push changes to GitHub
-git push github temp:feature
+git push github temp:feature --force
 
 # Switch back to the original branch
 git checkout feature
@@ -24,7 +24,7 @@ git checkout feature
 git merge temp
 
 # Push merged changes to GitLab
-git push gitlab feature
+git push gitlab feature --force
 
 # Clean up by deleting the temporary branch
 git branch -D temp
