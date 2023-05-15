@@ -7,7 +7,7 @@ git init
 git branch -m feature
 
 # Add remote origin
-git remote add origin git@gitlab.com:wodosharlatan/Docker-Node-Server.git
+git remote add origin git@gitlab.com:wodosharlatan/docker-integrated-node-server.git
 
 # checkout the feature branch
 git checkout -b feature
