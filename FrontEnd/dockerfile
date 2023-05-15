@@ -1,0 +1,21 @@
+# Use Node.js v16
+FROM node:16
+
+# Create app directory
+WORKDIR /app
+
+# Install app dependencies
+COPY package*.json ./
+
+RUN npm install
+
+
+# Bundle app source
+COPY  . .
+
+
+# Set the command to start the Vite server
+CMD [ "npm", "run", "dev" ]
+
+
+
