@@ -1,7 +1,7 @@
 cd ShellScripts/AutoGit
 
 # Push to Gitlab
-sudo sh Gitlab.sh
+sh Gitlab.sh
 
 cd ShellScripts/AutoGit
 
