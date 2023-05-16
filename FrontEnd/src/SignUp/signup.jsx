@@ -16,14 +16,6 @@ function SignUp() {
 		confirmPassword: "",
 	});
 
-    const GenerateID = () =>{
-        axios.get(`http://localhost:5173/login`).then((res) => {
-                    const datalength = res.data.length;
-                    return datalength + 1;
-        });
-        
-    }
-
 	const sendToBackEnd = async (e) => {
 		e.preventDefault();
 
@@ -44,17 +36,9 @@ function SignUp() {
 				username: formState.username,
 				email: formState.email,
 				password: await sha256(formState.password),
-                id: GenerateID().toString(),
 			})
 			.then((res) => {
-				setFormState({
-					username: "",
-					email: "",
-					password: "",
-					confirmPassword: "",
-				});
                 navigate("/Home");
-                
 			})
 			.catch((err) => {
 				console.log(err);

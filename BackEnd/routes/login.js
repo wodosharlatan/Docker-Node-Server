@@ -11,7 +11,6 @@ router.post("/", async (req, res) => {
 		Username: req.body.username,
 		Password: req.body.password,
 		Email: req.body.email,
-		ID: req.body.id,
 	});
 
 	try {

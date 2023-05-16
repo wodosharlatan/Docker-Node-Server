@@ -18,10 +18,6 @@ const userSchema = mongoose.Schema({
 	Key: {
 		type: String,
 		default: SHA256(Math.floor(Math.random() * 10) + 1).toString(),
-	},
-	ID: {
-		type: String,
-		required: true,
 	}
 });
 
