@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+let SHA256 = require("crypto-js/sha256");
+const axios = require("axios");
 
 const userSchema = mongoose.Schema({
 	Username: {
@@ -13,6 +15,14 @@ const userSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	Key: {
+		type: String,
+		default: SHA256(Math.floor(Math.random() * 10) + 1).toString(),
+	},
+	ID: {
+		type: String,
+		required: true,
+	}
 });
 
 module.exports = mongoose.model("Users", userSchema);

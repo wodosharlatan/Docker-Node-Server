@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import reactLogo from "../assets/react.svg";
 import viteLogo from "/vite.svg";
 import { sha256 } from "crypto-hash";
@@ -7,12 +8,21 @@ import "./signup.scss";
 
 /* Async function */
 function SignUp() {
+    const navigate = useNavigate();
 	const [formState, setFormState] = useState({
 		username: "",
 		email: "",
 		password: "",
 		confirmPassword: "",
 	});
+
+    const GenerateID = () =>{
+        axios.get(`http://localhost:5173/login`).then((res) => {
+                    const datalength = res.data.length;
+                    return datalength + 1;
+        });
+        
+    }
 
 	const sendToBackEnd = async (e) => {
 		e.preventDefault();
@@ -34,6 +44,7 @@ function SignUp() {
 				username: formState.username,
 				email: formState.email,
 				password: await sha256(formState.password),
+                id: GenerateID().toString(),
 			})
 			.then((res) => {
 				setFormState({
@@ -42,7 +53,8 @@ function SignUp() {
 					password: "",
 					confirmPassword: "",
 				});
-				alert("Success! Check console for no reason ( nothing wierd )");
+                navigate("/Home");
+                
 			})
 			.catch((err) => {
 				console.log(err);

@@ -11,6 +11,7 @@ router.post("/", async (req, res) => {
 		Username: req.body.username,
 		Password: req.body.password,
 		Email: req.body.email,
+		ID: req.body.id,
 	});
 
 	try {
@@ -20,5 +21,16 @@ router.post("/", async (req, res) => {
 		res.json({ message: err.toString() });
 	}
 });
+
+// Get all users
+router.get("/", async (req, res) => {
+	try {
+		const users = await User.find();
+		res.json(users);
+	} catch (err) {
+		res.json({ message: err.toString() });
+	}
+});
+
 
 module.exports = router;
