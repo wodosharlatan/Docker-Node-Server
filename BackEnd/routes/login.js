@@ -1,22 +1,24 @@
 const express = require("express");
 const router = express.Router();
-const axios = require("axios");
+const User = require("../models/user_model");
 
 // Import .env variables
 require("dotenv/config");
 
-// localhost:3000/entries => get all entries
+// Make new user
 router.post("/", async (req, res) => {
-	const username = req.body.username;
-	const password = req.body.password;
-	const email = req.body.email;
-
-	res.send({
-		username: username,
-		password: password,
-		email: email,
+	const user = new User({
+		Username: req.body.username,
+		Password: req.body.password,
+		Email: req.body.email,
 	});
 
+	try {
+		const savedUser = await user.save();
+		res.json(savedUser);
+	} catch (err) {
+		res.json({ message: err.toString() });
+	}
 });
 
 module.exports = router;

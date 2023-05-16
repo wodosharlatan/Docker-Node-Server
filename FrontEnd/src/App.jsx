@@ -2,6 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import { sha256 } from "crypto-hash";
+import axios from "axios";
 import "./App.css";
 
 /* Async function */
@@ -13,7 +14,7 @@ function App() {
 		confirmPassword: "",
 	});
 
-	const doSomething = async (e) => {
+	const sendToBackEnd = async (e) => {
 		e.preventDefault();
 
 		for (let key in formState) {
@@ -28,20 +29,30 @@ function App() {
 			return;
 		}
 
-		const hashedPassword = await sha256(formState.password);
-	
-    
-
-
+		axios
+			.post(`http://localhost:5173/login`, {
+				username: formState.username,
+				email: formState.email,
+				password: await sha256(formState.password),
+			})
+			.then((res) => {
+				// console.log(res);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	return (
 		<>
 			<div>
-				<a href="https://vitejs.dev" target="_blank">
+				<a href="https://github.com/wodosharlatan" target="_blank">
 					<img src={viteLogo} className="logo" alt="Vite logo" />
 				</a>
-				<a href="https://react.dev" target="_blank">
+				<a
+					href="https://gitlab.com/wodosharlatan/Docker-Node-Server"
+					target="_blank"
+				>
 					<img src={reactLogo} className="logo react" alt="React logo" />
 				</a>
 			</div>
@@ -49,7 +60,7 @@ function App() {
 			<div className="container">
 				<form
 					onSubmit={(e) => {
-						doSomething(e);
+						sendToBackEnd(e);
 					}}
 				>
 					<div className="form-group">

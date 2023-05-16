@@ -5,6 +5,22 @@ const port = process.env.PORT || 5173;
 const cors = require('cors');
 const path = require("path");
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+// add ,"Access-Control-Allow-Credentials": true Header
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Credentials", true); // add ,"Access-Control-Allow-Credentials": true Header
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+// CORS 
+app.use(cors({
+    origin: '*'
+}));
+
+
 
 // Parse JSON
 app.use(bodyParser.json());
@@ -18,8 +34,7 @@ const loginRoute = require('./routes/login');
 // Middleware
 app.use('/login', loginRoute);
 
-// CORS 
-app.use(cors());
+
 
 // Serve static files
 app.use(express.static(__dirname + "/public"));
@@ -35,3 +50,6 @@ app.listen(port, () => {
     console.log(`Server running on port http://localhost:${port} !`);
     }
 );
+
+// Connect to MongoDB
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true})
