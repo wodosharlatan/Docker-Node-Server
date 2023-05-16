@@ -16,7 +16,7 @@ git commit -m "[Auto GIT - $(date "+%d.%m.%Y")]"
 
 
 # Push merged changes to GitLab
-git push gitlab feature --force
+git push gitlab temp:feature --force
 
 # Push changes to GitHub
 git push github temp:feature --force
@@ -24,7 +24,7 @@ git push github temp:feature --force
 # Merge changes from temp
 git merge temp
 
-
+git checkout main
 
 # Clean up by deleting the temporary branch
 git branch -D temp
