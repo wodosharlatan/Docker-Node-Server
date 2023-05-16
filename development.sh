@@ -1,7 +1,7 @@
 cd BackEnd
 
 npm ci
-npm run dev
+npm run dev &
 
 cd ..
 
