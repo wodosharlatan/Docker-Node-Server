@@ -17,9 +17,6 @@ git commit -m "[ Auto GIT - $(date "+%d.%m.%Y") ]"
 # Push changes to GitHub
 git push github temp:feature --force
 
-# Switch back to the original branch
-git checkout feature
-
 # Merge changes from temp
 git merge temp
 
