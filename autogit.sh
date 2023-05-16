@@ -1,4 +1,3 @@
-git init
 git add .
 git commit -m "[ Auto GIT - $(date "+%d.%m.%Y") ]"
 git pull origin git@github.com:wodosharlatan/Docker-Node-Server
