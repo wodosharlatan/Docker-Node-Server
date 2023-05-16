@@ -31,5 +31,16 @@ router.get("/", async (req, res) => {
 	}
 });
 
+// Get a specific user by Email
+router.get("/:Email", async (req, res) => {
+	try {
+		const validatedUser = await User.findOne({ Email: req.params.Email });
+
+		res.send(validatedUser);
+	} catch (error) {
+		res.json({ message: error.toString() });
+	}
+});
+
 
 module.exports = router;
