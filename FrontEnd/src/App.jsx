@@ -1,0 +1,116 @@
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import { sha256 } from "crypto-hash";
+import "./App.css";
+
+/* Async function */
+function App() {
+	const [formState, setFormState] = useState({
+		username: "",
+		email: "",
+		password: "",
+		confirmPassword: "",
+	});
+
+	const doSomething = async (e) => {
+		e.preventDefault();
+
+		for (let key in formState) {
+			if (formState[key].trim().length === 0) {
+				alert(`${key} is empty`);
+				return;
+			}
+		}
+
+		if (formState.password !== formState.confirmPassword) {
+			alert("Passwords do not match");
+			return;
+		}
+
+		const hashedPassword = await sha256(formState.password);
+	
+    
+
+
+	};
+
+	return (
+		<>
+			<div>
+				<a href="https://vitejs.dev" target="_blank">
+					<img src={viteLogo} className="logo" alt="Vite logo" />
+				</a>
+				<a href="https://react.dev" target="_blank">
+					<img src={reactLogo} className="logo react" alt="React logo" />
+				</a>
+			</div>
+
+			<div className="container">
+				<form
+					onSubmit={(e) => {
+						doSomething(e);
+					}}
+				>
+					<div className="form-group">
+						<label htmlFor="username">Username</label>
+						<input
+							type="text"
+							value={formState.username}
+							onChange={(e) =>
+								setFormState({ ...formState, username: e.target.value })
+							}
+							className="form-control"
+							id="username"
+							placeholder="Enter username"
+						/>
+					</div>
+					<div className="form-group">
+						<label htmlFor="email">Email address</label>
+						<input
+							type="email"
+							value={formState.email}
+							onChange={(e) =>
+								setFormState({ ...formState, email: e.target.value })
+							}
+							className="form-control"
+							id="email"
+							placeholder="Enter email"
+						/>
+					</div>
+					<div className="form-group">
+						<label htmlFor="password">Password</label>
+						<input
+							type="password"
+							value={formState.password}
+							onChange={(e) =>
+								setFormState({ ...formState, password: e.target.value })
+							}
+							className="form-control"
+							id="password"
+							placeholder="Password"
+						/>
+					</div>
+					<div className="form-group">
+						<label htmlFor="confirmPassword">Confirm Password</label>
+						<input
+							type="password"
+							value={formState.confirmPassword}
+							onChange={(e) =>
+								setFormState({ ...formState, confirmPassword: e.target.value })
+							}
+							className="form-control"
+							id="confirmPassword"
+							placeholder="Confirm Password"
+						/>
+					</div>
+					<button type="submit" className="btn btn-primary">
+						Submit
+					</button>
+				</form>
+			</div>
+		</>
+	);
+}
+
+export default App;
