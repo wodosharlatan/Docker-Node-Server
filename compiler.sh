@@ -1,7 +1,15 @@
-cd ShellScripts
-
 # Build the docker images for the backend and frontend
-sh docker-build.sh
 
-# Create a Docker container and run it
-sh docker-run.sh
+cd BackEnd
+
+# Build the backend docker image
+docker build . -t backend
+
+cd ..
+
+cd FrontEnd
+
+# Build the frontend docker image
+docker build . -t frontend
+
+cd ..

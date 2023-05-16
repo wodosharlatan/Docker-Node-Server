@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Composer Data
+data
+
+# misc
+.vscode
+BackEnd/.env
+
