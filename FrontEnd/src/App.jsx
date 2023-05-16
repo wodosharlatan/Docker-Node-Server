@@ -36,7 +36,12 @@ function App() {
 				password: await sha256(formState.password),
 			})
 			.then((res) => {
-				for (let key in formState) {setFormState({ ...formState, [key]: "" })}
+				setFormState({
+					username: "",
+					email: "",
+					password: "",
+					confirmPassword: "",
+				});
 				alert(res);
 			})
 			.catch((err) => {
