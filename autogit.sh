@@ -1,6 +1,5 @@
-git init
 git add .
-git commit -m "[ Auto GIT - $(date "+%d.%m.%Y") ]"
+git commit -m "Committing changes before pushing to GitHub and GitLab"
 git pull origin git@github.com:wodosharlatan/Docker-Node-Server
 
 # Add remotes for GitHub and GitLab repositories
@@ -13,7 +12,7 @@ git checkout -b temp
 git add .
 
 # Create commit with date-based message
-git commit -m "[ Auto GIT - $(date "+%d.%m.%Y") ]"
+git commit -m "[Auto GIT - $(date "+%d.%m.%Y")]"
 
 # Push changes to GitHub
 git push github temp:feature --force
