@@ -1,9 +1,8 @@
 git add .
-git commit -m "Committing changes before pushing to GitHub and GitLab"
-git pull origin git@github.com:wodosharlatan/Docker-Node-Server
+git commit -m "[Auto GIT - $(date "+%d.%m.%Y")]"
 
 # Add remotes for GitHub and GitLab repositories
-git remote add gitlab git@gitlab.com:wodosharlatan/Docker-Node-Server.git
+git remote add gitlab git@gitlab.com:wodosharlatan/Docker-Node-Server
 git remote add github git@github.com:wodosharlatan/Docker-Node-Server
 
 
