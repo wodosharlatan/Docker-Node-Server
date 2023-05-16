@@ -5,7 +5,7 @@ git pull origin git@github.com:wodosharlatan/Docker-Node-Server
 
 # Add remotes for GitHub and GitLab repositories
 git remote add github git@github.com:wodosharlatan/Docker-Node-Server
-git remote add gitlab git@gitlab.com:wodosharlatan/Docker-Node-Server.git
+git remote add gitlab git@gitlab.com:wodosharlatan/Docker-Node-Server
 
 # Create a temporary branch
 git checkout -b temp
