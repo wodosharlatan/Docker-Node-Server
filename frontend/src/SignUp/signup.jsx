@@ -41,7 +41,7 @@ function SignUp() {
                 axios.get(`http://localhost:5173/login/${formState.email}`).then((res) => {
                     const identificationParams = { email: formState.email, key: res.data.Key };
                     // add cookie that expires in 1 day
-                    document.cookie = `UniqueUserIdentifier=${identificationParams}; expires=${new Date(Date.now() + 86400000).toUTCString()}; path=/`;
+                    document.cookie = `UniqueUserIdentifier=${JSON.stringify(identificationParams)}; expires=${new Date(Date.now() + 86400000).toUTCString()}; path=/`;
                 });
                 navigate("/Home");
 			})

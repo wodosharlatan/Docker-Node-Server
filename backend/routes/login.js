@@ -2,9 +2,6 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user_model");
 
-// Import .env variables
-require("dotenv/config");
-
 // Make new user
 router.post("/", async (req, res) => {
 	const user = new User({
